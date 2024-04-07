@@ -1,15 +1,10 @@
 [tool.poetry]
 name = "fasted"
 version = "0.2404.0"
-description = ""
+description = "FastAPI dependencies and utilities."
 authors = ["Peter Volf <do.volfp@gmail.com>"]
-license = "MIT"
 readme = "README.md"
-
-[tool.mypy]
-strict = true
-show_error_codes = true
-exclude = ["tree_app"]
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -24,6 +19,14 @@ poethepoet = "^0.25.0"
 pytest = "^8.1.1"
 ruff = "^0.3.5"
 uvicorn = "^0.29.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+strict = true
+show_error_codes = true
 
 [tool.ruff]
 line-length = 108
@@ -61,6 +64,3 @@ test = "python -m pytest tests"
 static-checks.sequence = ["lint", "check-format", "mypy"]
 static-checks.ignore_fail = "return_non_zero"
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
