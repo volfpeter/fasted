@@ -1,0 +1,3 @@
+# `Dependency`
+
+::: fasted.typing.Dependency
