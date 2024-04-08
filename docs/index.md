@@ -29,6 +29,7 @@ Supports:
 
 - **Sync and async** instance **methods**.
 - **Sync and async generator** methods.
+- **Inheritence** and **`super()`** calls is decorated methods.
 - An **optional factory** (FastAPI dependency) for creating the `self` instance. If not set, the class' `__init__()` method will serve as the dependency for creating the `self` instance.
 - **Decorated** instance **methods will behave as expected** if called directly.
 

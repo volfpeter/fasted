@@ -188,18 +188,18 @@ class SelfDependent(Generic[TOwner, TParams, TResult]):
 @overload
 def selfdependent(
     factory: None = None,
-) -> Callable[[BoundMethod[TOwner, TParams, TResult]], SelfDependent[TOwner, TParams, TResult]]: ...
+) -> Callable[[BoundMethod[TOwner, TParams, TResult]], BoundMethod[TOwner, TParams, TResult]]: ...
 
 
 @overload
 def selfdependent(
     factory: Dependency[TOwner],
-) -> Callable[[BoundMethod[TOwner, TParams, TResult]], SelfDependent[TOwner, TParams, TResult]]: ...
+) -> Callable[[BoundMethod[TOwner, TParams, TResult]], BoundMethod[TOwner, TParams, TResult]]: ...
 
 
 def selfdependent(
     factory: Dependency[TOwner] | None = None,
-) -> Callable[[BoundMethod[TOwner, TParams, TResult]], SelfDependent[TOwner, TParams, TResult]]:
+) -> Callable[[BoundMethod[TOwner, TParams, TResult]], BoundMethod[TOwner, TParams, TResult]]:
     """
     Decorator that converts an instance method into a FastAPI dependency using a `SelfDependent` descriptor.
 
@@ -213,4 +213,5 @@ def selfdependent(
     ) -> SelfDependent[TOwner, TParams, TResult]:
         return SelfDependent[TOwner, TParams, TResult](wrapped=func, factory=factory)
 
-    return decorator
+    # This type ignore is necessary for mypy in case the decorated method is overridden in a subclass.
+    return decorator  # type: ignore

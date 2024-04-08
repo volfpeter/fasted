@@ -12,17 +12,22 @@ def make_foo(base_1: float, base_2: float) -> "Foo":
     return Foo(base_1 + base_2)
 
 
-class Foo:
+class BaseFoo:
     def __init__(self, base: float) -> None:
         self._base = base
 
+    def sync_method(self, mul: float | None = None) -> float:
+        return self._base if mul is None else (self._base * mul)
+
+
+class Foo(BaseFoo):  # Test inheritence and super() support.
     @selfdependent(make_foo)
     def factory(self, mul: float | None = None) -> float:
         return self._base if mul is None else (self._base * mul)
 
     @selfdependent()
     def sync_method(self, mul: float | None = None) -> float:
-        return self._base if mul is None else (self._base * mul)
+        return super().sync_method(mul)
 
     @selfdependent()
     async def async_method(self, mul: float | None = None) -> float:
