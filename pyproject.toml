@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fasted"
-version = "0.2404.1"
+version = "0.2404.2"
 description = "FastAPI dependencies and utilities."
 authors = ["Peter Volf <do.volfp@gmail.com>"]
 readme = "README.md"
