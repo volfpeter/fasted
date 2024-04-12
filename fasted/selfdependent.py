@@ -187,17 +187,20 @@ class SelfDependent(Generic[TOwner, TParams, TResult]):
 
 @overload
 def selfdependent(
+    *,
     factory: None = None,
 ) -> Callable[[BoundMethod[TOwner, TParams, TResult]], BoundMethod[TOwner, TParams, TResult]]: ...
 
 
 @overload
 def selfdependent(
+    *,
     factory: Dependency[TOwner],
 ) -> Callable[[BoundMethod[TOwner, TParams, TResult]], BoundMethod[TOwner, TParams, TResult]]: ...
 
 
 def selfdependent(
+    *,
     factory: Dependency[TOwner] | None = None,
 ) -> Callable[[BoundMethod[TOwner, TParams, TResult]], BoundMethod[TOwner, TParams, TResult]]:
     """

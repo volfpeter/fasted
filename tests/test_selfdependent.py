@@ -21,7 +21,7 @@ class BaseFoo:
 
 
 class Foo(BaseFoo):  # Test inheritence and super() support.
-    @selfdependent(make_foo)
+    @selfdependent(factory=make_foo)
     def factory(self, mul: float | None = None) -> float:
         return self._base if mul is None else (self._base * mul)
 

@@ -38,7 +38,7 @@ Example use:
 ```python
 from typing import Annotated
 
-from fastapi import FastAPI, Depends
+from fastapi import Depends, FastAPI
 from fasted import selfdependent
 
 
@@ -57,7 +57,7 @@ class Multiplier:
         # where this method is used will have a `base` and a `mul` query parameter.
         return self.base * mul
 
-    @selfdependent(double)
+    @selfdependent(factory=double)
     async def double(self, mul: float) -> float:
         # `double()` will be used as the dependency to create `self`, so the route
         # where this method is used will only have a `mul` query parameter.
